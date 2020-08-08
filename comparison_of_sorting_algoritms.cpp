@@ -143,7 +143,7 @@ void heapSort(unsigned long long arr[], unsigned long long n)
 int partition (unsigned long long arr[], unsigned long long low, unsigned long long high)
 {
  	unsigned long long pivot = arr[high];
-    unsigned long long = (low - 1);
+    unsigned long long i = (low - 1);
 
     for (unsigned long long j = low; j <= high - 1; j++)
     {
@@ -168,46 +168,6 @@ void quickSort(unsigned long long arr[], unsigned long long low, unsigned long l
     }
 }
 
-unsigned long long getMax(unsigned long long arr[], unsigned long long n) 
-{ 
-    long long mx = arr[0]; 
-    for (int i = 1; i < n; i++) 
-        if (arr[i] > mx) 
-            mx = arr[i]; 
-    return mx; 
-} 
-   
-void countSort(unsigned long long arr[], unsigned long long n, unsigned long long exp) 
-{ 
-    unsigned long long output[n];
-    unsigned long long i, count[10] = {0}; 
-  
-    for (i = 0; i < n; i++) 
-        count[ (arr[i]/exp)%10 ]++; 
-  
-    for (i = 1; i < 10; i++) 
-        count[i] += count[i - 1]; 
-  
-    for (i = n - 1; i >= 0; i--) 
-    { 
-        output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
-        count[ (arr[i]/exp)%10 ]--; 
-    } 
-
-    for (i = 0; i < n; i++) 
-        arr[i] = output[i]; 
-} 
-  
-void radixsort(unsigned long long arr[], unsigned long long n) 
-{ 
-
-    unsigned long long m = getMax(arr, n); 
- 
-    for (int exp = 1; m/exp > 0; exp *= 10) 
-        countSort(arr, n, exp); 
-}
-
-
 
 int main()
 {
@@ -224,7 +184,7 @@ int main()
 
     for(int i=0; i<size;i++)
     {
-        arr_1[i] = arr_2[i] = arr_3[i] = arr_4[i] = arr_5[i] = arr_6[i]  =(rand() % x);
+        arr_1[i] = arr_2[i] = arr_3[i] = arr_4[i] = arr_5[i] = arr_6[i]  =(rand() % x)+1;
     }
 
     auto start = high_resolution_clock::now();
